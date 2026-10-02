@@ -20,7 +20,7 @@ The app can run as a single Node.js service that serves the production-built fro
 1. In the [Railway Dashboard](https://railway.com/new), choose **GitHub Repository** and select `gdzly-gif/REFORM`.
 2. Deploy the service. Railway detects the root `Dockerfile`, which builds the app and listens on Railway's injected `PORT`.
 3. In the service's **Settings**, configure the healthcheck path as `/api/health`, then generate a public domain under **Networking**.
-4. Add a volume under **Volumes** and mount it at `/app/data`. Keep the service to one replica.
+4. Add a volume under **Volumes** and mount it at `/app/data`. Add the service variable `RAILWAY_RUN_UID=0` so the app can write to the mounted volume, and keep the service to one replica.
 
 The volume preserves accounts, messages, and uploads through restarts and deployments; in-memory sessions and live voice/chat state do not persist, so users sign in again after a restart. Railway Free and Trial volumes are limited to 0.5 GB, while Hobby volumes are 5 GB; storage and compute usage may incur charges depending on the current plan. Check [Railway pricing](https://railway.com/pricing) and set a usage limit before inviting users. The app's local-file storage and in-memory state are intended for a single service instance, not horizontal scaling.
 
