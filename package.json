@@ -1,0 +1,34 @@
+{
+  "name": "reform",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm:server\" \"vite\"",
+    "server": "node --env-file-if-exists=.env.local server/index.js",
+    "start": "node server/index.js",
+    "build": "tsc -b && vite build",
+    "test": "node --test",
+    "check": "npm run build && npm test && node --check server/index.js",
+    "preview": "vite preview"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "dependencies": {
+    "express": "5.2.1",
+    "lucide-react": "1.48.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "socket.io": "4.8.4",
+    "socket.io-client": "4.8.4"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "concurrently": "10.0.5",
+    "typescript": "7.0.2",
+    "vite": "8.3.1"
+  }
+}
