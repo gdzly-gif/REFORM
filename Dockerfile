@@ -22,7 +22,6 @@ COPY --from=build --chown=node:node /app/server ./server
 COPY --from=build --chown=node:node /app/dist ./dist
 RUN mkdir -p /app/data/attachments /app/data/profile-pictures \
   && chown -R node:node /app/data
-VOLUME ["/app/data"]
 USER node
 EXPOSE 3001
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
