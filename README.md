@@ -26,6 +26,16 @@ The repository includes a Render Blueprint at [`render.yaml`](./render.yaml). To
 
 The Blueprint uses the existing Dockerfile, enables HTTPS through Render, supports WebSockets, and trusts the single Render proxy hop. A paid web-service plan is required for the persistent disk. Keep the service to one instance: account and app data are file-backed, while sessions and live voice/chat state are in memory. The app will sign users out after a service restart. Back up the disk before making risky changes.
 
+### Free Render demo
+
+For a no-cost test deployment, use [`render-demo.yaml`](./render-demo.yaml) as a separate Blueprint:
+
+1. In the Render Dashboard, choose **New > Blueprint** and connect the same GitHub repository.
+2. Set **Blueprint Path** to `render-demo.yaml` before deploying.
+3. Review the `reform-demo` web service and deploy it on the Free plan.
+
+The free demo intentionally has no persistent disk. Free services can spin down after 15 minutes without traffic and may take about a minute to wake. The local-filesystem data used by this app—including accounts, messages, and uploads—can be lost when the service restarts, spins down, or redeploys. Use this only to preview/test the app, not for a public launch or data you need to keep. Render's free-service limits may change; check its current [free instance documentation](https://render.com/docs/free).
+
 ### Docker (recommended)
 
 ```bash
